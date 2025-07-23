@@ -1,5 +1,45 @@
 ﻿using System;
 
+
+    /*
+     Question 3 : 
+
+    Write a function:
+
+    class Solution { public int solution(int[] A); }
+
+    that, given an array A of N integers, returns the sum of positive integers, if the array contains 0 , shall stop doing summation, skip all negative integers that occurs in A.
+
+    For example, given A = [5, 3, -6, -4, 10, 2], the function should return 20.
+
+    Given A = [1, 2, 3], the function should return 6.
+
+    Given A = [−1, −3], the function should return 0.
+
+    Given A = [1, 2, 0 ,−3, 8], the function should return 3
+
+    Given A = [1, 2, 3 ,−3, 8], the function should return 14
+
+    Write an efficient algorithm for the following assumptions:
+
+    N is an integer within the range [1..100,000];
+    each element of array A is an integer within the range [−1,000,000..1,000,000].
+
+
+    using System;
+    // you can also use other imports, for example:
+    // using System.Collections.Generic;
+
+    // you can write to stdout for debugging purposes, e.g.
+    // Console.WriteLine("this is a debug message");
+
+    class Solution {
+        public int solution(int[] A) {
+            // Implement your solution here
+        }
+    }
+
+     */
 class Solution2
 {
     public int CalculateSumBeforeZero(int[] A)

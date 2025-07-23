@@ -1,103 +1,126 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
+/*
+There are 2 type of Employees 
+OnContract Basis and OnPayroll
+
+Add the required classes and members
+Every employee should have a unique ID, name, reporting manager
+
+Contract basis employees will have contract date, duration and charges
+
+payroll employees will have Joining date, exp, basic salary , da, hra, etc. 
+ 
+
+ Depending upon Exp, calculate Net Salary
+if exp > 10 years , DA = 10 % of basic, HRA = 8.5 % of basic , PF = 6200
+if exp > 7 years and less than 10 years , DA = 7 % of basic, HRA = 6.5 % of basic , PF = 4100
+if exp > 5 years and less than 7 years, DA = 4.1 % of basic, HRA = 3.8 % of basic , PF = 1800
+if exp < 5 years , DA = 1.9 % of basic, HRA = 2.0 % of basic , PF = 1200
+
+Display the details in proper way
+
+ You are supposed to do it for some Employees, count is not known. Which loop you will use? 
+
+  1. Understand how you will make this class and add data members
+  2. Create Methods accordingly:
+       We know all details about Employee
+  3. Print total number of Employees */
+
 class Employee
 {
-    int id;
-    string name;
-    string manager;
+    public string ID;
+    public string Name;
+    public string ReportingManager;
 
-    public Employee(int id, string name, string manager)
+    public Employee(string id, string name, string manager)
     {
-        this.id = id;
-        this.name = name;
-        this.manager = manager;
+        ID = id;
+        Name = name;
+        ReportingManager = manager;
     }
 
-    public virtual void Display()
+    public virtual void DisplayDetails()
     {
-        Console.WriteLine($"ID: {id}, Name: {name}, Manager: {manager}");
+        Console.WriteLine($"ID: {ID}, Name: {Name}, Manager: {ReportingManager}");
     }
 }
 
 class ContractEmployee : Employee
 {
-    DateTime contractDate;
-    int duration;
-    double charges;
+    public string ContractDate;
+    public int Duration; // in months
+    public double Charges;
 
-    public ContractEmployee(int id, string name, string manager, DateTime date, int duration, double charges)
+    public ContractEmployee(string id, string name, string manager, string contractDate, int duration, double charges)
         : base(id, name, manager)
     {
-        this.contractDate = date;
-        this.duration = duration;
-        this.charges = charges;
+        ContractDate = contractDate;
+        Duration = duration;
+        Charges = charges;
     }
 
-    public override void Display()
+    public override void DisplayDetails()
     {
-        base.Display();
-        Console.WriteLine("Type       : Contract");
-        Console.WriteLine($"Start Date : {contractDate.ToShortDateString()}");
-        Console.WriteLine($"Duration   : {duration} months");
-        Console.WriteLine($"Charges    : {charges} INR");
+        base.DisplayDetails();
+        Console.WriteLine($"[Contract] Date: {ContractDate}, Duration: {Duration} months, Charges: ₹{Charges}");
     }
 }
 
 class PayrollEmployee : Employee
 {
-    DateTime joiningDate;
-    double exp;
-    double basic;
+    public string JoiningDate;
+    public double Experience; // in years
+    public double BasicSalary;
+    public double DA, HRA, PF, NetSalary;
 
-    public PayrollEmployee(int id, string name, string manager, DateTime joinDate, double exp, double basic)
+    public PayrollEmployee(string id, string name, string manager, string joiningDate, double exp, double basic)
         : base(id, name, manager)
     {
-        this.joiningDate = joinDate;
-        this.exp = exp;
-        this.basic = basic;
+        JoiningDate = joiningDate;
+        Experience = exp;
+        BasicSalary = basic;
+        CalculateSalary();
     }
 
-    double GetDA()
+    public void CalculateSalary()
     {
-        if (exp > 10) return 0.12 * basic;
-        if (exp > 7) return 0.07 * basic;
-        if (exp > 5) return 0.041 * basic;
-        return 0.019 * basic;
+        if (Experience > 10)
+        {
+            DA = 0.10 * BasicSalary;
+            HRA = 0.085 * BasicSalary;
+            PF = 6200;
+        }
+        else if (Experience > 7)
+        {
+            DA = 0.07 * BasicSalary;
+            HRA = 0.065 * BasicSalary;
+            PF = 4100;
+        }
+        else if (Experience > 5)
+        {
+            DA = 0.041 * BasicSalary;
+            HRA = 0.038 * BasicSalary;
+            PF = 1800;
+        }
+        else
+        {
+            DA = 0.019 * BasicSalary;
+            HRA = 0.020 * BasicSalary;
+            PF = 1200;
+        }
+
+        NetSalary = BasicSalary + DA + HRA - PF;
     }
 
-    double GetHRA()
+    public override void DisplayDetails()
     {
-        if (exp > 10) return 0.085 * basic;
-        if (exp > 7) return 0.065 * basic;
-        if (exp > 5) return 0.038 * basic;
-        return 0.02 * basic;
-    }
-
-    double GetPF()
-    {
-        if (exp > 10) return 6200;
-        if (exp > 7) return 4100;
-        if (exp > 5) return 1800;
-        return 1200;
-    }
-
-    double GetNetSalary()
-    {
-        return basic + GetDA() + GetHRA() - GetPF();
-    }
-
-    public override void Display()
-    {
-        base.Display();
-        Console.WriteLine("Type        : Payroll");
-        Console.WriteLine($"Joining Date: {joiningDate.ToShortDateString()}");
-        Console.WriteLine($"Experience  : {exp} years");
-        Console.WriteLine($"Basic       : {basic} INR");
-        Console.WriteLine($"DA          : {GetDA()} INR");
-        Console.WriteLine($"HRA         : {GetHRA()} INR");
-        Console.WriteLine($"PF          : {GetPF()} INR");
-        Console.WriteLine($"Net Salary  : {GetNetSalary()} INR");
+        base.DisplayDetails();
+        Console.WriteLine($"[Payroll] Joining: {JoiningDate}, Exp: {Experience} years");
+        Console.WriteLine($"Basic: ₹{BasicSalary}, DA: ₹{DA}, HRA: ₹{HRA}, PF: ₹{PF}");
+        Console.WriteLine($"Net Salary: ₹{NetSalary}");
     }
 }
 
@@ -107,65 +130,68 @@ class Program
     {
         List<Employee> employees = new List<Employee>();
 
-        Console.Write("Enter number of employees: ");
-        int count = int.Parse(Console.ReadLine());
-
-        for (int i = 0; i < count; i++)
+        while (true)
         {
-            Console.WriteLine($"\nEnter details for Employee {i + 1}");
+            Console.WriteLine("\nAdd New Employee");
+            Console.WriteLine("1. Contract Employee");
+            Console.WriteLine("2. Payroll Employee");
+            Console.WriteLine("3. Display All Employees");
+            Console.WriteLine("4. Exit");
+            Console.Write("Enter your choice: ");
+            string ch = Console.ReadLine();
 
-            Console.Write("ID: ");
-            int id = int.Parse(Console.ReadLine());
-
-            Console.Write("Name: ");
-            string name = Console.ReadLine();
-
-            Console.Write("Reporting Manager: ");
-            string manager = Console.ReadLine();
-
-            Console.Write("Type (1 = Contract, 2 = Payroll): ");
-            int type = int.Parse(Console.ReadLine());
-
-            if (type == 1)
+            if (ch == "1")
             {
-                Console.Write("Contract Start Date (yyyy-mm-dd): ");
-                DateTime date = DateTime.Parse(Console.ReadLine());
-
-                Console.Write("Contract Duration (months): ");
+                Console.Write("Enter ID: ");
+                string id = Console.ReadLine();
+                Console.Write("Enter Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Enter Reporting Manager: ");
+                string manager = Console.ReadLine();
+                Console.Write("Enter Contract Date: ");
+                string date = Console.ReadLine();
+                Console.Write("Enter Duration (months): ");
                 int duration = int.Parse(Console.ReadLine());
-
-                Console.Write("Charges: ");
+                Console.Write("Enter Charges: ");
                 double charges = double.Parse(Console.ReadLine());
 
-                employees.Add(new ContractEmployee(id, name, manager, date, duration, charges));
+                ContractEmployee ce = new ContractEmployee(id, name, manager, date, duration, charges);
+                employees.Add(ce);
             }
-            else if (type == 2)
+            else if (ch == "2")
             {
-                Console.Write("Joining Date (yyyy-mm-dd): ");
-                DateTime joining = DateTime.Parse(Console.ReadLine());
-
-                Console.Write("Experience (in years): ");
+                Console.Write("Enter ID: ");
+                string id = Console.ReadLine();
+                Console.Write("Enter Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Enter Reporting Manager: ");
+                string manager = Console.ReadLine();
+                Console.Write("Enter Joining Date: ");
+                string date = Console.ReadLine();
+                Console.Write("Enter Experience (years): ");
                 double exp = double.Parse(Console.ReadLine());
-
-                Console.Write("Basic Salary: ");
+                Console.Write("Enter Basic Salary: ");
                 double basic = double.Parse(Console.ReadLine());
 
-                employees.Add(new PayrollEmployee(id, name, manager, joining, exp, basic));
+                PayrollEmployee pe = new PayrollEmployee(id, name, manager, date, exp, basic);
+                employees.Add(pe);
+            }
+            else if (ch == "3")
+            {
+                Console.WriteLine($"\nTotal Employees: {employees.Count}");
+                foreach (Employee emp in employees)
+                {
+                    emp.DisplayDetails();
+                }
+            }
+            else if (ch == "4")
+            {
+                break;
             }
             else
             {
-                Console.WriteLine("Invalid type. Skipping this employee.");
+                Console.WriteLine("Invalid choice.");
             }
         }
-
-        Console.WriteLine("\n--- Employee Details ---\n");
-
-        foreach (var emp in employees)
-        {
-            emp.Display();
-            Console.WriteLine("-----------------------------");
-        }
-
-        Console.WriteLine($"\nTotal Employees: {employees.Count}");
     }
 }

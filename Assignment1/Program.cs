@@ -3,11 +3,13 @@
     internal class Program
     {
         static void Main()
+
+            //Display Hello World
         {
             Console.WriteLine("Hello, World!");
         }
 
-
+        //Display result of Addition , subtraction , product , quotient of two numbers
         //{
         //    Console.Write("Enter first number: ");
         //    int a = Convert.ToInt32(Console.ReadLine());
@@ -27,7 +29,7 @@
         //}
 
 
-
+        //Display result of Addition , subtraction , product , quotient of two numbers depending upon choice (using if else / switch)
         //{
         //    Console.Write("Enter first number: ");
         //    int a = Convert.ToInt32(Console.ReadLine());
@@ -61,6 +63,8 @@
         //    }
         //}
 
+
+        // Display your name 10 times
         //{
         //    for (int i = 1,i <= 10 ,i++)
         //    {
@@ -69,6 +73,7 @@
         //}
 
 
+        //Display all even numbers by using do while, while , for loop
         //{
         //    // For loop
         //    Console.WriteLine("Even numbers using for loop:");
@@ -94,6 +99,8 @@
         //    } while (k <= 20);
         //}
 
+
+        //Display all odd numbers by using do while, while , for loop
         //{
         //    // For loop
         //    Console.WriteLine("Odd numbers using for loop:");
@@ -120,7 +127,7 @@
         //}
 
 
-
+        //Display table of a number using all loops
         //{
         //    Console.Write("Enter a number to display its table: ");
         //    int num = Convert.ToInt32(Console.ReadLine());
@@ -151,6 +158,9 @@
         //    } while (k <= 10);
         //}
 
+
+
+        //Display numbers from 100 to 5 with a gap of 3
         //{
         //    Console.WriteLine("Numbers from 100 to 5 with a gap of 3:");
 
@@ -160,12 +170,18 @@
         //    }
         //}
 
+
+
+        //Declare some integer variables, assign them some values and display them in one line
         //{
         //    int a = 10, b = 20, c = 30;
 
         //    Console.WriteLine($"Values are: a = {a}, b = {b}, c = {c}");
         //}
 
+
+
+        //Declare some integer variables, assign them some values and display them separate lines
         //{
         //    int a = 5;
         //    int b = 10;
