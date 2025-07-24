@@ -3,10 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Assignment_10s</RootNamespace>
+    <RootNamespace>Asssignment_10</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <StartupObject>ques2</StartupObject>
   </PropertyGroup>
 
 </Project>
