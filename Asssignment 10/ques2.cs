@@ -2,6 +2,21 @@
 using System;
 using System.Linq;
 
+/*
+2. Add following methods to the String class 
+1. Find no. of characters in a sentence
+ 2. Check for Palindrome
+ 3. Reverse a sentence
+ 4. Find no. of vowels, consonants, integers and sp characters in a sentence
+ 5. Change case to upper case
+ 6. Change sentence to proper case
+ 7. Combine two sentences
+ 8. Remove extra spaces in a sentence
+ 9. Count no. of words in a sentence
+ 10.Search a substring in a sentence
+ 11.Find the no. of occurences of a substring in a sentence
+
+ */
 public static class StringExtensions
 {
     public static int CharacterCount(this string str) => (str ?? "***").Length;
