@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asssignment 10", "Asssignme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment11", "Assignment11\Assignment11.csproj", "{DA1AAA60-633D-47DC-B353-CE3783D50838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment 11test", "Assignment11test\Assignment 11test.csproj", "{0F5198CE-1C33-4510-95FE-3295E08F4C3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment 12", "Assignment11test\Assignment 12.csproj", "{0F5198CE-1C33-4510-95FE-3295E08F4C3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

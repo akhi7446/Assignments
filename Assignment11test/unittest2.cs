@@ -19,12 +19,12 @@ namespace Tests
 
         [Test]
         public void TestIsPalindrome_True() => Assert.IsTrue(sf.IsPalindrome("Madam"));
+        [Test]
+        public void TestIsPalindrome_True1() => Assert.IsFalse(sf.IsPalindrome("Madav"));
+
 
         [Test]
-        public void TestIsPalindrome_False() => Assert.IsFalse(sf.IsPalindrome("Hello"));
-
-        [Test]
-        public void TestReverseSentence() => Assert.AreEqual("dlroW olleH", sf.ReverseSentence("Hello World"));
+        public void TestReverseSentence() => Assert.AreEqual("koob a si siht", sf.ReverseSentence("this is a book"));
 
         [Test]
         public void TestAnalyzeCharacters()
