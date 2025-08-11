@@ -1,0 +1,19 @@
+.navbar
+    {
+        justify-content: center;
+        display: flex;
+    }
+.navbar1
+    {
+        text-decoration: none;
+    }
+.seperator
+    {
+        margin : 0 5px;
+    }
+.banner
+    {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
