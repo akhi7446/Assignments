@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<div class="container">
+  <h2>Add a New Book</h2>
+
+  <form #bookForm="ngForm" (ngSubmit)="newBook(bookForm)">
+    <input
+      type="text"
+      placeholder="Book Name"
+      name="name"
+      [(ngModel)]="newBookObj.name"
+      required
+    />
+
+    <input
+      type="text"
+      placeholder="Author Name"
+      name="author"
+      [(ngModel)]="newBookObj.author"
+      required
+    />
+
+    <input
+      type="text"
+      placeholder="Publishing Year"
+      name="year"
+      [(ngModel)]="newBookObj.year"
+      required
+    />
+
+    <input
+      type="text"
+      placeholder="Language"
+      name="language"
+      [(ngModel)]="newBookObj.language"
+      required
+    />
+
+    <button type="submit" [disabled]="bookForm.invalid">Add Book</button>
+  </form>
+
+  <h2>Books List</h2>
+  <table *ngIf="books.length > 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.year }}</td>
+        <td>{{ book.language }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
