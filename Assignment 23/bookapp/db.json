@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "Angular Momentum",
+      "author": "D.M. Brink, G.R. Satchler",
+      "year": 1968,
+      "language": "English"
+    },
+    {
+      "id": 2,
+      "name": "Angular 6 for Enterprise-Ready Web Applications",
+      "author": "Doguhan Uluca",
+      "year": 2018,
+      "language": "English"
+    },
+    {
+      "id": 3,
+      "name": "DotNet Core API",
+      "author": "Microsoft",
+      "year": 1999,
+      "language": "English"
+    }
+  ]
+}
